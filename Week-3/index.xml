@@ -1,0 +1,277 @@
+<!-- a.	Create an XML for a real estate XML document.
+ Its root element real-estate contains a sequence of 
+ sub-elements agencies, owners, properties and flats. 
+
+Each of the above elements must have sub elements 
+respectively:
+Agency = name, e-mail, phone.
+Owner = name ,e-mail, phone.
+Property = name, number of flats.
+Flat = name, description, rate.
+
+Add the following compulsory attributes ‒ Identifiers 
+of owners, properties and flats and Comfort levels of flats.
+
+Add the following optional attributes-Dates when flats 
+were posted.
+
+Define address element:
+Address = street, postal code, city, and country ‒ 
+Country is optional and when missing, postal code must 
+be placed at the end (i.e. after city and not before) 
+Add these addresses to agencies, owners, and properties 
+(one address to each entity).
+
+b.	Define a DTD that validates the above document.
+c.	Define an XSD that validates the above document. -->
+
+<!DOCTYPE real-estate SYSTEM "validate.dtd">  
+<real-estate>
+    <agencies>
+        <name>XYZ</name>
+        <e-mail>xyz@gmail.com</e-mail>
+        <phone>7894565123</phone>
+        <address>
+            <street>Adbul Kalam</street>
+            <city>Hyderabad</city>
+            <postal>500054</postal>
+            <country>India</country>
+        </address>
+    </agencies>
+    <owners>
+        <name>Sourav</name>
+        <e-mail>skd@gmail.com</e-mail>
+        <phone>8564231472</phone>
+        <address>
+            <street>Adbul Kalam</street>
+            <city>Hyderabad</city>
+            <postal>500054</postal>
+            <country>India</country>
+        </address>
+    </owners>
+    <properties>
+        <name>Godavari</name>
+        <numberOfFlats>10</numberOfFlats>
+        <address>
+            <street>Adbul Kalam</street>
+            <city>Hyderabad</city>
+            <postal>500054</postal>
+            <country>India</country>
+        </address>
+    </properties>
+    <flats>
+        <name>G1</name>
+        <description>This flat is in the ground floor with a decent view off the window.</description>
+        <rate>2000000</rate>
+    </flats>
+</real-estate>
+
+<!-- XSD -->
+
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="real-estate">
+        <xs:complexType>
+            <xs:sequence>
+
+            <!-- AGENCIES -->
+
+                <xs:element name="agencies">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="name">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="e-mail">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="phone">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="[1-9][0-9]{9}"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="address">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="street">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="city">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="postal">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                              </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="country">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <!-- Owner -->
+
+                <xs:element name="owners">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="name">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="e-mail">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="phone">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="[1-9][0-9]{9}"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="address">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="street">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="city">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="postal">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="country">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+            <!-- Properties -->
+
+                <xs:element name="properties">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="name">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="numberOfFlats">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:integer">
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="address">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="street">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="city">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="postal">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="country">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+            <!-- Flats -->
+
+            <xs:element name="flats">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="name">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="description">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                  
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="rate">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:integer">
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+
+<!-- DTD -->
