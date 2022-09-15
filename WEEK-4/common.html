@@ -1,0 +1,43 @@
+<!-- Write a HTML Page that contains a selection box with a list of 5 countries. When the user selects a
+country, its capital should be printed next to the list. Add CSS to customize the properties of the font
+of the capital (color ,bold, and font-size). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Select country</p>
+    <select name="" id="countries" onchange="printCity(this.value);">
+        <option value="Select an option">Select an option</option>
+        <option value="India" id="india">India</option>
+        <option value="Japan" id="japan">Japan</option>
+        <option value="UK" id="uk">UK</option>
+        <option value="America" id="america">America</option>
+        <option value="Pakistan" id="pakistan">Pakistan</option>
+    </select>
+    <p class="ans"></p>
+</body>
+<script>
+    function printCity(val) {
+        if ( val === 'India' ) {
+            document.querySelector('.ans').innerHTML = "Delhi";
+        }
+        if ( val === 'America' ) {
+            document.querySelector('.ans').innerHTML = "New York";
+        }
+        if ( val === 'UK' ) {
+            document.querySelector('.ans').innerHTML = "London";
+        }
+        if ( val === 'Japan' ) {
+            document.querySelector('.ans').innerHTML = "Tokyo";
+        }
+        if ( val === 'Pakistan' ) {
+            document.querySelector('.ans').innerHTML = "Karachi";
+        }
+    }
+</script>
+</html>
